@@ -1,0 +1,2 @@
+module SkyimagesHelper
+end
