@@ -1,4 +1,7 @@
 <div id="notice"><%= notice %></div>
 
-
 <h1>Users</h1>
+<h1><%= @profile.name %></h1>
+
+
+<%= link_to "Sign out",  destroy_user_session_path,  :method => :delete %>

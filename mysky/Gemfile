@@ -20,6 +20,8 @@ gem 'therubyracer', platforms: :ruby
 gem 'less-rails'
 gem 'semantic-ui-rails'
 gem 'devise'
+gem 'paperclip'
+gem 'rails-footnotes','>= 3.7.9', :group => :development
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
