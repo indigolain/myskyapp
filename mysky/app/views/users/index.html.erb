@@ -2,6 +2,6 @@
 
 <h1>Users</h1>
 <h1><%= @profile.name %></h1>
-
+<%= image_tag @profile.avatar(:medium) %>
 
 <%= link_to "Sign out",  destroy_user_session_path,  :method => :delete %>

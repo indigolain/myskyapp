@@ -6,8 +6,15 @@ class UsersController < ApplicationController
       @profile = current_user
     end
   end
+
   def profile
     @user = User.find(params[:id])
+  end
+
+  def update
+    @user = User.find(params[:id])
+    @user.update(user_params)
+    redirect_to @user
   end
 
 end
