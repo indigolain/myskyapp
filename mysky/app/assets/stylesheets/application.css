@@ -9,5 +9,38 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
+ *= require fancybox
  *= require_tree .
  */
+
+body {
+  padding-top: 40px;
+  width:100%;
+}
+
+.wrapper {
+  margin: 0 auto;
+}
+
+body > .navbar {
+  font-size: 12px;
+}
+
+body > .wrapper > .navbar .brand {
+  float:left;
+}
+
+body > .navbar > .nav > li > a {
+  padding: 10px 15px 10px;
+}
+
+.nav-list {
+  float: left;
+  width: 100px;
+  display: inline-block;
+}
+
+.contents {
+  display: inline-block;
+  width: 1200px
+}

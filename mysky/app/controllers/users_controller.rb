@@ -4,7 +4,19 @@ class UsersController < ApplicationController
       redirect_to new_user_session_path
     else
       @profile = current_user
+      @skyimage = Skyimage.new
     end
+  end
+
+  def new
+    @skyimage = Skyimage.new
+  end
+
+  def create
+    @skyimage = Skyimage.new
+  end
+
+  def show
   end
 
   def profile

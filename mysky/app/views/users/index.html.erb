@@ -1,7 +1,19 @@
 <div id="notice"><%= notice %></div>
 
-<h1>Users</h1>
-<h1><%= @profile.name %></h1>
-<%= image_tag @profile.avatar(:medium) %>
+<h1>
+  <%= image_tag @profile.avatar(:thumb) %>
+  <%= @profile.name %>
+</h1>
 
-<%= link_to "Sign out",  destroy_user_session_path,  :method => :delete %>
+</br>
+<%= render 'form' %>
+
+<% @profile.skyimages.each do |skyimage|%>
+  <%= link_to image_tag(skyimage.image(:large)),skyimage.image(:larger),:class=>"grouped_elements",:rel=>"group" %>
+<% end %>
+
+  <%= debug(@profile) %>
+  <%= debug(@profile.skyimages) %>
+
+<%= link_to "Sign out",  destroy_user_session_path,  :method => :delete %><br>
+<%= link_to "Edit Profile", edit_user_registration_path %>

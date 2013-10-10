@@ -1,0 +1,19 @@
+<%= form_for(@skyimage) do |f| %>
+  <div>
+    <%= f.label "Choose your sky" %>
+    <%= f.file_field :image %>
+  </div></br>
+
+  <div>
+    <%= f.label :title %>
+    <%= f.text_field :title %>
+  </div></br>
+
+  <div>
+    <%= f.label :location %>
+    <%= f.text_field :location  %>
+  </div></br>
+
+  <%= f.submit "Post My Sky" %>
+
+<% end %>
