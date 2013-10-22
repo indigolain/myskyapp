@@ -1,0 +1,8 @@
+<h1>showing friends</h1>
+
+<% @people.each do |person| %>
+  <p>
+  <%= image_tag person.avatar(:thumb) %>
+  <%= link_to person.name, :controller => "users", :action => "profile", :id => person.id %>
+  </p>
+<% end %>

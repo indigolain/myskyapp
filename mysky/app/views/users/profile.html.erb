@@ -1,4 +1,13 @@
 <div id="notice"><%= notice %></div>
 
+<h1>
+  <%= image_tag @user.avatar(:thumb) %>
+  <%= @user.name %>
+</h1>
 
-<h1><%= @user.name %> Profile</h1>
+<div id="album">
+  <h2><%= "album" %></h2>
+  <% @user.skyimages.each do |skyimage| %>
+    <%= link_to image_tag(skyimage.image(:large)),skyimage.image(:larger),:class=>"grouped_elements",:rel=>"group" %>
+  <% end %>
+</div>

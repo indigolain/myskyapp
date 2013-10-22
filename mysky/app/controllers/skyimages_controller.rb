@@ -22,4 +22,10 @@ class SkyimagesController < ApplicationController
   def show
     @my_skyimages = Skyimage.find(current_user.id)
   end
+
+  def destroy
+    @skyimages = Skyimage.find(params[:id])
+    @skyimages.destroy
+    render myalbums_path
+  end
 end

@@ -42,5 +42,9 @@ body > .navbar > .nav > li > a {
 
 .contents {
   display: inline-block;
-  width: 1200px
+  width: 1200px;
+  border-left-style: solid;
+  border-left-width: 1px;
+  border-left-color: #ccc;
+  padding-left: 18px;
 }

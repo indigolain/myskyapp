@@ -8,12 +8,18 @@
 </br>
 <%= render 'form' %>
 
-<% @profile.skyimages.each do |skyimage|%>
-  <%= link_to image_tag(skyimage.image(:large)),skyimage.image(:larger),:class=>"grouped_elements",:rel=>"group" %>
-<% end %>
-
-  <%= debug(@profile) %>
-  <%= debug(@profile.skyimages) %>
 
 <%= link_to "Sign out",  destroy_user_session_path,  :method => :delete %><br>
 <%= link_to "Edit Profile", edit_user_registration_path %>
+
+<script>
+$(function() {
+  setTimeout(function() {
+    $('#notice').fadeOut("slow")
+  }, 800);
+
+  $('a[data-method="delete"]').on('ajax:success', function(e, data, status, xhr) {
+    $('#post_'+data.post.id).fadeOut("slow");
+  });
+});
+</script>

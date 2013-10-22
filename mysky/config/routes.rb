@@ -3,9 +3,17 @@ Mysky::Application.routes.draw do
 
   devise_for :users
   resources :users do
-    get 'profile' => 'user#profile'
+    member do
+      get 'profile' => 'users#profile'
+    end
   end
+  resources :myalbums
   resources :skyimages
+  resources :friendships do
+    collection do
+      post 'add' => 'friendships#add'
+    end
+  end
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -13,17 +13,23 @@
       <div class="container">
         <div class="nav-collapse collapse">
           <ul class="nav">
-            <li><a href="/users/">My Page</a></li>
-            <li><a href="/users/">My Page</a></li>
+            <li><a href="/users/">Home</a></li>
+            <li><a href="/myalbums/">My Album</a></li>
+            <li>
+              <%= link_to "Sign out",destroy_user_session_path, :method => :delete %>
+            </li>
           </ul>
         </div>
       </div>
     </div>
   </div>
   <div class="nav nav-list">
-    <li class="nav-header">List Header</li>
-    <li><a href="#">Library</a></li>
-    <li><a href="#">Library</a></li>
+    <li class="nav-header">Home</li>
+    <li><a href="/users/"><i class="icon-home"></i>My Page</a></li>
+    <li><a href="/myalbums"><i class="icon-book"></i>My Album</a></li>
+    <li><a href="/friendships"><i class="icon-user"></i>My Friend</a></li>
+    <li class="nav-header">Groups</li>
+    <li><a href="/groups"><i class="icon-plus"></i>Add Group</a></li>
   </div>
   <div class="contents">
 <%= yield %>
