@@ -1,0 +1,19 @@
+<div id="notice"><%= notice %></div>
+<h1>My Album</h1>
+<% @profiles.skyimages.each do |skyimage| %>
+  <%= link_to image_tag(skyimage.image(:large)),skyimage.image(:larger),:class=>"grouped_elements",:rel=>"group" %>
+  <%= link_to 'Delete', skyimage, :confirm => 'Sure?',
+                                  :method => :delete %>
+<% end %>
+
+<script>
+$(document).on('page:load',function() {
+  setTimeout(function() {
+    $('#notice').fadeOut("slow")
+  }, 800);
+
+  $('a[data-method="delete"]').on('ajax:success', function(e, data, status, xhr) {
+    $('#post_'+data.post.id).fadeOut("slow");
+  });
+});
+</script>

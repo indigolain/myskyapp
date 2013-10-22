@@ -1,7 +1,25 @@
 <div id="notice"><%= notice %></div>
 
-<h1>Users</h1>
-<h1><%= @profile.name %></h1>
-<%= image_tag @profile.avatar(:medium) %>
+<h1>
+  <%= image_tag @profile.avatar(:thumb) %>
+  <%= @profile.name %>
+</h1>
 
-<%= link_to "Sign out",  destroy_user_session_path,  :method => :delete %>
+</br>
+<%= render 'form' %>
+
+
+<%= link_to "Sign out",  destroy_user_session_path,  :method => :delete %><br>
+<%= link_to "Edit Profile", edit_user_registration_path %>
+
+<script>
+$(function() {
+  setTimeout(function() {
+    $('#notice').fadeOut("slow")
+  }, 800);
+
+  $('a[data-method="delete"]').on('ajax:success', function(e, data, status, xhr) {
+    $('#post_'+data.post.id).fadeOut("slow");
+  });
+});
+</script>
