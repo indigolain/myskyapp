@@ -1,2 +1,3 @@
-class Friendships < ActiveRecord::Base
+class Friendship < ActiveRecord::Base
+  belongs_to :user
 end

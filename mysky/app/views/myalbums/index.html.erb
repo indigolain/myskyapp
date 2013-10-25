@@ -3,7 +3,9 @@
 <% @profiles.skyimages.each do |skyimage| %>
   <%= link_to image_tag(skyimage.image(:large)),skyimage.image(:larger),:class=>"grouped_elements",:rel=>"group" %>
   <%= link_to 'Delete', skyimage, :confirm => 'Sure?',
-                                  :method => :delete %>
+                                  :method => :delete,
+                                  :class => "btn btn-danger"
+  %>
 <% end %>
 
 <script>
