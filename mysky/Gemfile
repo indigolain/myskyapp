@@ -25,6 +25,7 @@ gem 'rails-footnotes','>= 3.7.9', :group => :development
 gem 'jquery-turbolinks'
 gem 'jquery-rails'
 gem 'fancybox-rails'
+gem 'rails_admin'
 gem 'will_paginate'
 gem 'will_paginate-bootstrap'
 

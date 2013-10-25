@@ -1,7 +1,8 @@
 Mysky::Application.routes.draw do
+  devise_for :users
+  mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
   root to: "users#index"
 
-  devise_for :users
   resources :users do
     member do
       get 'profile' => 'users#profile'
