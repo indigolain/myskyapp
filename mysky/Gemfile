@@ -21,12 +21,10 @@ gem 'less-rails'
 gem 'twitter-bootstrap-rails'
 gem 'devise'
 gem 'paperclip'
-gem 'rails-footnotes','>= 3.7.9', :group => :development
 gem 'jquery-turbolinks'
 gem 'jquery-rails'
 gem 'fancybox-rails'
-gem 'will_paginate'
-gem 'will_paginate-bootstrap'
+gem 'rails_admin'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
