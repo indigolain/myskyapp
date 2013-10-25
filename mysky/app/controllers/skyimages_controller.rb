@@ -26,6 +26,6 @@ class SkyimagesController < ApplicationController
   def destroy
     @skyimages = Skyimage.find(params[:id])
     @skyimages.destroy
-    render myalbums_path
+    redirect_to myalbums_path
   end
 end
