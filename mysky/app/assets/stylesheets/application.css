@@ -13,6 +13,10 @@
  *= require_tree .
  */
 
+.pull-right {
+  float:right;
+}
+
 body {
   padding-top: 40px;
   width:100%;
@@ -34,17 +38,28 @@ body > .navbar > .nav > li > a {
   padding: 10px 15px 10px;
 }
 
-.nav-list {
-  float: left;
-  width: 100px;
-  display: inline-block;
+.left-menu {
+  float:right;
+}
+
+.right-menu {
+  padding-top:30px;
 }
 
 .contents {
-  display: inline-block;
-  width: 1200px;
+  margin:0;
+  padding-left:50px;
+  padding-top:30px;
   border-left-style: solid;
   border-left-width: 1px;
   border-left-color: #ccc;
-  padding-left: 18px;
+  border-right-style: solid;
+  border-right-width: 1px;
+  border-right-color: #ccc;
+}
+
+
+.pull-right img {
+  width: 80%;
+  height: 80%;
 }

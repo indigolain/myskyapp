@@ -1,25 +1,12 @@
-<div id="notice"><%= notice %></div>
+<table class="table">
+  <tbody>
+    <% for friendship in @user.friendships %>
+      <tr>
+        <td class="avatar-img"><%= image_tag friendship.friend.avatar(:thumb) %></td>
+        <td><%= link_to friendship.friend.name, profile_user_path(:id => friendship.friend.id) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
 
-<h1>
-  <%= image_tag @profile.avatar(:thumb) %>
-  <%= @profile.name %>
-</h1>
 
-</br>
-<%= render 'form' %>
-
-
-<%= link_to "Sign out",  destroy_user_session_path,  :method => :delete %><br>
-<%= link_to "Edit Profile", edit_user_registration_path %>
-
-<script>
-$(function() {
-  setTimeout(function() {
-    $('#notice').fadeOut("slow")
-  }, 800);
-
-  $('a[data-method="delete"]').on('ajax:success', function(e, data, status, xhr) {
-    $('#post_'+data.post.id).fadeOut("slow");
-  });
-});
-</script>

@@ -5,6 +5,13 @@ class UsersController < ApplicationController
     else
       @profile = current_user
       @skyimage = Skyimage.new
+      @friend = User.find(:all)
+      @user = current_user
+      @friends = Friendship.find(:all, :conditions => {:user_id => current_user.id})
+      @friendss = current_user
+      @friendship = current_user.friendships.all
+
+
     end
   end
 
@@ -20,7 +27,8 @@ class UsersController < ApplicationController
   end
 
   def profile
-    @user = User.find(params[:id])
+    @user = current_user
+    @skyimage = Skyimage.new
   end
 
   def update

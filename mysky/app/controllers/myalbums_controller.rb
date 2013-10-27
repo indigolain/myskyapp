@@ -4,7 +4,7 @@ class MyalbumsController < ApplicationController
       redirect_to new_user_session_path
     else
       @profiles = current_user
-      #@skyimages = Skyimage.find(:all, :conditions => {:user_id => current_user.id})
+      @skyimage = Skyimage.new
     end
   end
 

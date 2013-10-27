@@ -7,35 +7,95 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
-<div class="wrapper">
-  <div class="navbar navbar-inverse navbar-fixed-top">
-    <div class="navbar-inner">
-      <div class="container">
-        <div class="nav-collapse collapse">
-          <ul class="nav">
-            <li><a href="/users/">Home</a></li>
-            <li><a href="/myalbums/">My Album</a></li>
-            <li>
-              <%= link_to "Sign out",destroy_user_session_path, :method => :delete %>
-            </li>
-          </ul>
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li><a href="/users/">Home</a></li>
+              <li><a href="/myalbums/">My Album</a></li>
+            </ul>
+            <ul class="nav pull-right">
+              <% if current_user != nil %>
+                <li>
+                  <%= image_tag current_user.avatar(:thumb) %>
+                </li>
+                <li>
+                  <%= link_to current_user.name, users_path %>
+                </li>
+              <%end%>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="nav nav-list">
-    <li class="nav-header">Home</li>
-    <li><a href="/users/"><i class="icon-home"></i>My Page</a></li>
-    <li><a href="/myalbums"><i class="icon-book"></i>My Album</a></li>
-    <li><a href="/friendships"><i class="icon-user"></i>My Friend</a></li>
-    <li class="nav-header">Groups</li>
-    <li><a href="/groups"><i class="icon-plus"></i>Add Group</a></li>
-  </div>
-  <div class="contents">
-<%= yield %>
+    <div class="nav nav-list span2">
+      <div class="left-menu">
+        <li class="nav-header">Home</li>
+        <li><a href="/users/"><i class="icon-home"></i>My Page</a></li>
+        <li><a href="/myalbums"><i class="icon-book"></i>My Album</a></li>
+        <li><a href="/friendships"><i class="icon-user"></i>My Friend</a></li>
+        <li class="nav-header">Groups</li>
+        <li><a href="/groups"><i class="icon-plus"></i>Add Group</a></li>
+      </div>
+    </div>
+    <div class="contents span7">
+      <%= yield %>
+    </div>
+    <div class="right-menu span2">
+      <% if current_user != nil %>
+        <%= form_for(@skyimage) do |f| %>
+          <div>
+            <%= f.label "Choose your sky" %>
+            <%= f.file_field :image %>
+          </div></br>
+
+          <div>
+            <%= f.label :title %>
+            <%= f.text_field :title %>
+          </div></br>
+
+          <div>
+            <%= f.label "Description" %>
+            <%= f.text_field :body %>
+          </div></br>
+
+          <div>
+            <%= f.label :location %>
+            <%= f.text_field :location  %>
+          </div></br>
+
+          <%= f.submit "Post My Sky" %>
+        <% end %>
+        <div id="notice">
+          <% if notice == "done uploading photo" %>
+            <div class="alert alert-success"><%= notice %></div>
+          <% elsif notice == "unable to upload photo" %>
+            <div class="alert alert-error"><%= notice %></div>
+          <% end %>
+        </div>
+        <%= link_to "Sign out",  destroy_user_session_path,  :method => :delete %><br>
+        <%= link_to "Edit Profile", edit_user_registration_path %>
+      <% end %>
+    </div>
   </div>
 </div>
 </body>
 
 
 </html>
+
+
+<script>
+$(function() {
+  setTimeout(function() {
+    $('#notice').fadeOut("slow")
+  }, 800);
+
+  $('a[data-method="delete"]').on('ajax:success', function(e, data, status, xhr) {
+    $('#post_'+data.post.id).fadeOut("slow");
+  });
+});
+</script>
