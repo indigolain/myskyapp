@@ -1,26 +1,33 @@
 class FriendshipsController < ApplicationController
   def index
-    #@friend = Friendship.find(:all, :conditions => {:id => current_user.id})
-    @friend = User.all#find(:all, :conditions => {:id => current_user.id})
-    @friends = Friendship.find(:all, :conditions => {:user_id => current_user.id})
-  end
-
-  def create
-    @friend = Friendship.new(params[:user_id])
-    @friend.user_id = current_user.id
-    @friend.friend_id = params[:user_id]
-    if @friend.save
-      redirect_to friendships_path, notice: "さくせいされました！"
-
+    if !user_signed_in?
+      redirect_to new_user_session_path
     else
-      @friend = Friendship.all
-      redirect_to friendships_path
+      @friend = User.find(:all)
+      @user = current_user
+      @friends = Friendship.find(:all, :conditions => {:user_id => current_user.id})
+      @friendss = current_user
+      @friendship = current_user.friendships.all
+
     end
   end
 
+  def create
+    @friendship = current_user.friendships.build(:friend_id => params[:friend_id])
+    if @friendship.save
+      flash[:notice] = "Added friend."
+        redirect_to friendships_path
+      else
+        flash[:error] = "Unable to add friend."
+        redirect_to friendships_path
+      end
+  end
+
   def destroy
-    @friendship = Friendship.find(params[:id])
+    @friendship = current_user.friendships.find(params[:id])
     @friendship.destroy
+    flash[:notice] = "Removed friendship."
     redirect_to friendships_path
   end
+
 end

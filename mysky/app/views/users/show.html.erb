@@ -1,7 +1,11 @@
-<h1>This is the users page</h1>
+<h1>Users found</h1>
 <div id="notice"><%= notice %></div>
 
+<% @searched_user.each do |user| %>
+  <p>
+  <%= image_tag user.avatar(:thumb) %>
+  <%= link_to user.name, :controller => "users", :action => "profile", :id => user.id %>
+  <%= link_to 'Add friend', friendships_path(:friend_id => user.id), :method => ':post', :class => "btn" %>
+  </p>
+<% end %>
 
-<h1><%= @user.name %> Profile</h1>
-
-<%= debug(@user) %>

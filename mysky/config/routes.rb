@@ -1,4 +1,5 @@
 Mysky::Application.routes.draw do
+
   devise_for :users
   root to: "users#index"
 
@@ -7,6 +8,7 @@ Mysky::Application.routes.draw do
       get 'profile' => 'users#profile'
     end
   end
+  get 'users/search' => 'users#search'
   resources :myalbums
   resources :skyimages
   resources :friendships do

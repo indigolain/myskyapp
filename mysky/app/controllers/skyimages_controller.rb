@@ -12,10 +12,10 @@ class SkyimagesController < ApplicationController
     @skyimage = Skyimage.new(attr)
     @skyimage.user_id = current_user.id
     if @skyimage.save
-      redirect_to users_path, notice: "さくせいされました！"
+      redirect_to (:back), notice: "done uploading photo"
     else
       @skyimage = Skyimage.all
-      redirect_to users_path
+      redirect_to (:back), notice: "unable to upload photo"
     end
   end
 

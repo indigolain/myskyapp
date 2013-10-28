@@ -25,6 +25,7 @@ gem 'jquery-turbolinks'
 gem 'jquery-rails'
 gem 'fancybox-rails'
 gem 'rails_admin'
+gem 'ransack'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
