@@ -16,6 +16,18 @@
             <ul class="nav">
               <li><a href="/users/">Home</a></li>
               <li><a href="/myalbums/">My Album</a></li>
+
+              <!--
+              <form class="navbar-search">
+                <div class="input-append">
+                  <input type="text" class="span12" placeholder="Search for users">
+                  <button type="submit" class="btn">
+                    <i class="icon-search"></i>
+                  </button>
+                </div>
+              </form>
+              -->
+
             </ul>
             <ul class="nav pull-right">
               <% if current_user != nil %>
@@ -25,6 +37,7 @@
                 <li>
                   <%= link_to current_user.name, users_path %>
                 </li>
+
               <%end%>
             </ul>
           </div>
@@ -32,13 +45,17 @@
       </div>
     </div>
     <div class="nav nav-list span2">
-      <div class="left-menu">
+      <div class="left-menu well">
         <li class="nav-header">Home</li>
         <li><a href="/users/"><i class="icon-home"></i>My Page</a></li>
         <li><a href="/myalbums"><i class="icon-book"></i>My Album</a></li>
         <li><a href="/friendships"><i class="icon-user"></i>My Friend</a></li>
         <li class="nav-header">Groups</li>
         <li><a href="/groups"><i class="icon-plus"></i>Add Group</a></li>
+        <div class="user-controll">
+          <%= link_to "Sign out",  destroy_user_session_path,  :method => :delete %><br>
+          <%= link_to "Edit Profile", edit_user_registration_path %>
+        </div>
       </div>
     </div>
     <div class="contents span7">
@@ -46,38 +63,48 @@
     </div>
     <div class="right-menu span2">
       <% if current_user != nil %>
-        <%= form_for(@skyimage) do |f| %>
-          <div>
-            <%= f.label "Choose your sky" %>
-            <%= f.file_field :image %>
-          </div></br>
-
-          <div>
-            <%= f.label :title %>
-            <%= f.text_field :title %>
-          </div></br>
-
-          <div>
-            <%= f.label "Description" %>
-            <%= f.text_field :body %>
-          </div></br>
-
-          <div>
-            <%= f.label :location %>
-            <%= f.text_field :location  %>
-          </div></br>
-
-          <%= f.submit "Post My Sky" %>
-        <% end %>
-        <div id="notice">
-          <% if notice == "done uploading photo" %>
-            <div class="alert alert-success"><%= notice %></div>
-          <% elsif notice == "unable to upload photo" %>
-            <div class="alert alert-error"><%= notice %></div>
+          <h4>Find your friend</h4>
+        <div class = "friend-search-form well">
+          <%= search_form_for @search,:url => {:controller => '/users', :action => 'search', :method => 'get'} do |f| %>
+            <%= f.text_field :name_cont, :class => 'span12' %>
+            <%= f.submit 'Search' %>
           <% end %>
+
         </div>
-        <%= link_to "Sign out",  destroy_user_session_path,  :method => :delete %><br>
-        <%= link_to "Edit Profile", edit_user_registration_path %>
+
+          <h4>Post your photo</h4>
+        <div class = "post-img-form well">
+          <%= form_for(@skyimage) do |f| %>
+            <div>
+              <%= f.label "Choose an image" %>
+              <%= f.file_field :image %>
+            </div></br>
+
+            <div>
+              <%= f.label :title %>
+              <%= f.text_field :title, :class => 'span12' %>
+            </div></br>
+
+            <div>
+              <%= f.label "Description" %>
+              <%= f.text_field :body, :class => 'span12' %>
+            </div></br>
+
+            <div>
+              <%= f.label :location %>
+              <%= f.text_field :location, :class => 'span12' %>
+            </div></br>
+
+            <%= f.submit "Post My Sky" %>
+          <% end %>
+          <div id="notice">
+            <% if notice == "done uploading photo" %>
+              <div class="alert alert-success"><%= notice %></div>
+            <% elsif notice == "unable to upload photo" %>
+              <div class="alert alert-error"><%= notice %></div>
+            <% end %>
+          </div>
+        </div>
       <% end %>
     </div>
   </div>

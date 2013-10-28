@@ -12,6 +12,19 @@
  *= require fancybox
  *= require_tree .
  */
+.container {
+  height:40px;
+}
+
+.navbar {
+  font-size: 13px;
+  height:41px;
+}
+
+.navbar-inner {
+  height:40px;
+}
+
 
 .pull-right {
   float:right;
@@ -27,7 +40,6 @@ body {
 }
 
 body > .navbar {
-  font-size: 12px;
 }
 
 body > .wrapper > .navbar .brand {
@@ -39,23 +51,27 @@ body > .navbar > .nav > li > a {
 }
 
 .left-menu {
-  float:right;
+  margin-top:20px;
+  float: right;
+}
+
+.user-controll {
+  margin-top: 50px;
 }
 
 .right-menu {
-  padding-top:30px;
+  margin-top: 20px;
+}
+
+.friend-search-form {
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: #ccc;
 }
 
 .contents {
-  margin:0;
   padding-left:50px;
   padding-top:30px;
-  border-left-style: solid;
-  border-left-width: 1px;
-  border-left-color: #ccc;
-  border-right-style: solid;
-  border-right-width: 1px;
-  border-right-color: #ccc;
 }
 
 

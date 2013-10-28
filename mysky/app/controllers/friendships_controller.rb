@@ -8,7 +8,6 @@ class FriendshipsController < ApplicationController
       @friends = Friendship.find(:all, :conditions => {:user_id => current_user.id})
       @friendss = current_user
       @friendship = current_user.friendships.all
-      @skyimage = Skyimage.new
 
     end
   end

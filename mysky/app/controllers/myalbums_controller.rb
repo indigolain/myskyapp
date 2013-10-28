@@ -4,7 +4,6 @@ class MyalbumsController < ApplicationController
       redirect_to new_user_session_path
     else
       @profiles = current_user
-      @skyimage = Skyimage.new
     end
   end
 

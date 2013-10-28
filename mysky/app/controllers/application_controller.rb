@@ -16,5 +16,14 @@ class ApplicationController < ActionController::Base
       end
     end
   protect_from_forgery with: :exception
-  @skyimage = Skyimage.new
+
+  before_filter :set_search
+  def set_search
+    @search=User.search(params[:q])
+  end
+
+  before_filter :set_skyimage
+  def set_skyimage
+    @skyimage=Skyimage.new
+  end
 end

@@ -1,18 +1,12 @@
 <h1>showing friends</h1>
 
-<% @friend.each do |friend| %>
-  <p>
-  <%= image_tag friend.avatar(:thumb) %>
-  <%= link_to friend.name, :controller => "users", :action => "profile", :id => friend.id %>
-  <%= link_to 'Add friend', friendships_path(:friend_id => friend.id), :method => ':post', :class => "btn" %>
-  </p>
-<% end %>
-
 <ul>
   <% for friendship in @user.friendships %>
+    <p>
       <%= image_tag friendship.friend.avatar(:thumb) %>
       <%= friendship.friend.name %>
       (<%= link_to "remove", friendship, :method => :delete %>)
+    </p>
   <% end %>
 </ul>
 

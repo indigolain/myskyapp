@@ -4,31 +4,27 @@ class UsersController < ApplicationController
       redirect_to new_user_session_path
     else
       @profile = current_user
-      @skyimage = Skyimage.new
       @friend = User.find(:all)
       @user = current_user
       @friends = Friendship.find(:all, :conditions => {:user_id => current_user.id})
       @friendss = current_user
       @friendship = current_user.friendships.all
-
-
     end
   end
 
   def new
-    @skyimage = Skyimage.new
   end
 
   def create
-    @skyimage = Skyimage.new
   end
 
   def show
+    @searched_user = @search.result
   end
 
   def profile
     @user = current_user
-    @skyimage = Skyimage.new
+    @searched_user = @search.result
   end
 
   def update
@@ -37,4 +33,7 @@ class UsersController < ApplicationController
     redirect_to @user
   end
 
+  def search
+    @searched_user = @search.result
+  end
 end
